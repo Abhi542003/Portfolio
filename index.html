@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhijit Portfolio</title>
+    <title>MCA Student Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
@@ -156,17 +156,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Section transition animations */
-        .section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .section.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Home section specific animations */
         .animate-fade-in-up {
             animation: fadeInUp 1s ease-out forwards;
@@ -279,19 +268,31 @@
             max-height: 500px; /* A value large enough to contain all menu items */
             opacity: 1;
         }
+
+        /* The actual image inside the wrapper */
+        .profile-image {
+            width: 256px; /* A standard size, adjust as needed */
+            height: 256px;
+            border-radius: 50%;
+            border: 4px solid #a5b4fc; /* Light mode border color */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        body.dark .profile-image {
+            border-color: #818cf8;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-md py-4 px-6 md:px-12 fixed w-full z-10 top-0 rounded-b-lg">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-indigo-600 hover:text-indigo-700 rounded-md p-2 transition duration-300 ease-in-out" onclick="showSection('home')">Abhijit Purohit</a>
+            <a href="#home" class="text-2xl font-bold text-indigo-600 hover:text-indigo-700 rounded-md p-2 transition duration-300 ease-in-out">Abhijit Purohit</a>
             <div class="flex items-center space-x-4">
                 <ul class="hidden md:flex space-x-6">
-                    <li><a href="#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2 nav-link-hover-effect" onclick="showSection('home')">Home</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2 nav-link-hover-effect" onclick="showSection('skills')">Skills</a></li>
-                    <li><a href="https://drive.google.com/file/d/1TximAjVHjUPMD6zBiIFdDaV3uf54Y40U/view?usp=sharing" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2 nav-link-hover-effect" onclick="showSection('resume')">Resume</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2 nav-link-hover-effect" onclick="showSection('contact')">Contact</a></li>
+                    <li><a href="#home" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2 nav-link-hover-effect">Home</a></li>
+                    <li><a href="#skills" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2 nav-link-hover-effect">Skills</a></li>
+                    <li><a href="https://drive.google.com/file/d/1TximAjVHjUPMD6zBiIFdDaV3uf54Y40U/view?usp=sharing" target="_blank" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2 nav-link-hover-effect">Resume</a></li>
+                    <li><a href="#contact" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 ease-in-out rounded-md p-2 nav-link-hover-effect">Contact</a></li>
                 </ul>
                 <!-- Dark Mode Toggle -->
                 <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 ease-in-out">
@@ -310,10 +311,10 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden mt-4">
             <ul class="flex flex-col space-y-2">
-                <li><a href="#" class="block text-gray-600 hover:text-indigo-600 font-medium p-2 rounded-md nav-link-hover-effect" onclick="showSection('home'); toggleMobileMenu();">Home</a></li>
-                <li><a href="#" class="block text-gray-600 hover:text-indigo-600 font-medium p-2 rounded-md nav-link-hover-effect" onclick="showSection('skills'); toggleMobileMenu();">Skills</a></li>
-                <li><a href="https://drive.google.com/file/d/1TximAjVHjUPMD6zBiIFdDaV3uf54Y40U/view?usp=sharing" class="block text-gray-600 hover:text-indigo-600 font-medium p-2 rounded-md nav-link-hover-effect" onclick="showSection('resume'); toggleMobileMenu();">Resume</a></li>
-                <li><a href="#" class="block text-gray-600 hover:text-indigo-600 font-medium p-2 rounded-md nav-link-hover-effect" onclick="showSection('contact'); toggleMobileMenu();">Contact</a></li>
+                <li><a href="#home" class="block text-gray-600 hover:text-indigo-600 font-medium p-2 rounded-md nav-link-hover-effect" onclick="toggleMobileMenu();">Home</a></li>
+                <li><a href="#skills" class="block text-gray-600 hover:text-indigo-600 font-medium p-2 rounded-md nav-link-hover-effect" onclick="toggleMobileMenu();">Skills</a></li>
+                <li><a href="https://drive.google.com/file/d/1TximAjVHjUPMD6zBiIFdDaV3uf54Y40U/view?usp=sharing" target="_blank" class="block text-gray-600 hover:text-indigo-600 font-medium p-2 rounded-md nav-link-hover-effect" onclick="toggleMobileMenu();">Resume</a></li>
+                <li><a href="#contact" class="block text-gray-600 hover:text-indigo-600 font-medium p-2 rounded-md nav-link-hover-effect" onclick="toggleMobileMenu();">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -321,17 +322,17 @@
     <!-- Main Content Area -->
     <main class="pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
         <!-- Home Section -->
-        <section id="home" class="section active">
+        <section id="home" class="py-12 md:py-24">
             <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12 min-h-[calc(100vh-12rem)]">
-                <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-indigo-700 mb-4 animate-fade-in-up" style="animation-delay: 0.1s;">Hi, I'm <span class="text-indigo-500">Abhijit Purohit</span></h1>
-                    <p class="text-xl md:text-2xl text-gray-700 mb-6 animate-fade-in-up" style="animation-delay: 0.3s;">An MCA student passionate about <span class="font-semibold text-indigo-600">Software Development</span></p>
-                    <p class="text-lg text-gray-600 mb-8 animate-fade-in-up" style="animation-delay: 0.5s;">
+                <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0 animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-indigo-700 mb-4">Hi, I'm <span class="text-indigo-500">Abhijit Purohit</span></h1>
+                    <p class="text-xl md:text-2xl text-gray-700 mb-6">An MCA student passionate about <span class="font-semibold text-indigo-600">Software Development</span></p>
+                    <p class="text-lg text-gray-600 mb-8">
                         Welcome to my portfolio! Here you'll find a showcase of my academic and personal achievements, highlighting my skills and professional journey.
                     </p>
-                    <div class="flex justify-center md:justify-start space-x-4 animate-fade-in-up" style="animation-delay: 0.7s;">
-                        <a href="https://drive.google.com/file/d/1TximAjVHjUPMD6zBiIFdDaV3uf54Y40U/view?usp=sharing" class="bg-indigo-600 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-indigo-700 transition duration-300 ease-in-out shadow-lg" onclick="showSection('resume')">View Resume</a>
-                        <a href="#" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-300 transition duration-300 ease-in-out shadow-lg" onclick="showSection('contact')">Get in Touch</a>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#resume" class="bg-indigo-600 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-indigo-700 transition duration-300 ease-in-out shadow-lg">View Resume</a>
+                        <a href="#contact" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-300 transition duration-300 ease-in-out shadow-lg">Get in Touch</a>
                     </div>
                 </div>
                 <div class="md:w-1/3 flex justify-center animate-scale-in" style="animation-delay: 0.9s;">
@@ -341,35 +342,35 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="section hidden">
+        <section id="skills" class="py-12 md:py-24">
             <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">My Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Programming Languages -->
                 <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
                     <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Programming Languages</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-700 text-lg">
-                        <li class="skill-item" style="animation-delay: 0.1s;">Python</li>
-                        <li class="skill-item" style="animation-delay: 0.2s;">Java</li>
-                        <li class="skill-item" style="animation-delay: 0.4s;">C</li>
-                        <li class="skill-item" style="animation-delay: 0.4s;">PHP</li>
-                        <li class="skill-item" style="animation-delay: 0.4s;">.NET (C#)</li>
-                        <li class="skill-item" style="animation-delay: 0.5s;">SQL</li>
+                        <li class="skill-item" onclick="explainSkill(this)">Python</li>
+                        <li class="skill-item" onclick="explainSkill(this)">Java</li>
+                        <li class="skill-item" onclick="explainSkill(this)">C</li>
+                        <li class="skill-item" onclick="explainSkill(this)">PHP</li>
+                        <li class="skill-item" onclick="explainSkill(this)">.NET (C#)</li>
+                        <li class="skill-item" onclick="explainSkill(this)">SQL</li>
                     </ul>
                 </div>
                 <!-- Web Technologies -->
                 <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
                     <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Web Technologies</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-700 text-lg">
-                        <li class="skill-item" style="animation-delay: 0.6s;">HTML5, CSS3, JavaScript</li>
-                        <li class="skill-item" style="animation-delay: 0.7s;">React.js</li>
-                        <li class="skill-item" style="animation-delay: 0.8s;">Node.js</li>
+                        <li class="skill-item" onclick="explainSkill(this)">HTML5, CSS3, JavaScript</li>
+                        <li class="skill-item" onclick="explainSkill(this)">React.js</li>
+                        <li class="skill-item" onclick="explainSkill(this)">Node.js</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- Resume Section -->
-        <section id="resume" class="section hidden">
+        <section id="resume" class="py-12 md:py-24">
             <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">My Resume</h2>
             <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200 text-center max-w-2xl mx-auto">
                 <p class="text-xl text-gray-700 mb-6">
@@ -383,7 +384,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section hidden">
+        <section id="contact" class="py-12 md:py-24">
             <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">Get in Touch</h2>
             <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200 max-w-2xl mx-auto">
                 <p class="text-lg text-gray-700 mb-6 text-center">
@@ -428,50 +429,21 @@
         </div>
     </footer>
 
-    <!-- Modal for Enhanced Description (kept for potential future use or if you add projects back) -->
-    <div id="descriptionModal" class="modal-overlay hidden">
+    <!-- Modal for Skill Explanation -->
+    <div id="skillExplanationModal" class="modal-overlay hidden">
         <div class="modal-content w-full md:w-1/2 lg:w-1/3">
-            <button class="close-button" onclick="closeModal()">&times;</button>
-            <h3 id="modalTitle" class="text-2xl font-bold text-indigo-700 mb-4"></h3>
-            <div id="modalContent" class="text-gray-700 text-lg leading-relaxed">
-                <!-- Enhanced description or loading spinner will go here -->
-                <div id="loadingSpinner" class="hidden flex justify-center items-center py-8">
+            <button class="close-button" onclick="closeSkillModal()">&times;</button>
+            <h3 id="skillModalTitle" class="text-2xl font-bold text-indigo-700 mb-4"></h3>
+            <div id="skillModalContent" class="text-gray-700 text-lg leading-relaxed">
+                <div id="skillLoadingSpinner" class="hidden flex justify-center items-center py-8">
                     <div class="spinner"></div>
-                    <p class="ml-4 text-gray-600">Generating enhanced description...</p>
+                    <p class="ml-4 text-gray-600">Generating skill explanation...</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Function to show a specific section and hide others
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                // Remove active class from all sections first
-                section.classList.remove('active');
-                if (section.id === sectionId) {
-                    // Add 'active' class to the target section to trigger animation
-                    section.classList.remove('hidden'); // Ensure it's visible before animating
-                    setTimeout(() => {
-                        section.classList.add('active');
-                    }, 10); // Small delay to allow 'hidden' to be removed first
-                } else {
-                    section.classList.add('hidden');
-                }
-            });
-
-            // Scroll to top of the section, accounting for fixed nav
-            const sectionElement = document.getElementById(sectionId);
-            if (sectionElement) {
-                const offsetTop = sectionElement.offsetTop - document.querySelector('nav').offsetHeight;
-                window.scrollTo({
-                    top: offsetTop > 0 ? offsetTop : 0,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
         // Dark Mode Toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
@@ -495,10 +467,7 @@
             } else {
                 body.classList.remove('dark');
             }
-            // Show the home section by default on load
-            showSection('home');
         });
-
 
         // Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobileMenuButton');
@@ -532,74 +501,30 @@
             });
         });
 
-        // --- Interactive Profile Image Rotation ---
-        const profileImage = document.getElementById('profileImage');
-        if (profileImage) {
-            profileImage.addEventListener('mousemove', (e) => {
-                const rect = profileImage.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
+        // --- Gemini API Integration for Skill Explanation ---
+        const skillExplanationModal = document.getElementById('skillExplanationModal');
+        const skillModalTitle = document.getElementById('skillModalTitle');
+        const skillModalContent = document.getElementById('skillModalContent');
+        const skillLoadingSpinner = document.getElementById('skillLoadingSpinner');
 
-                // Calculate mouse position relative to the center of the image
-                const mouseX = e.clientX - centerX;
-                const mouseY = e.clientY - centerY;
-
-                // Calculate the angle in radians, then convert to degrees
-                const angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
-
-                // Apply a subtle rotation. Adjust the multiplier (e.g., 0.05) for more or less sensitivity.
-                profileImage.style.transform = `rotateZ(${angle * 0.05}deg) scale(1.02)`;
-            });
-
-            profileImage.addEventListener('mouseleave', () => {
-                // Reset rotation and scale on mouse leave
-                profileImage.style.transform = `rotateZ(0deg) scale(1)`;
-            });
+        function showSkillModal(title, content) {
+            skillModalTitle.textContent = title;
+            skillModalContent.innerHTML = content;
+            skillExplanationModal.classList.add('visible');
         }
 
-        // --- Gemini API Integration for Project Description Enhancement (kept for potential future use) ---
-        // Note: This functionality is currently not accessible since the Projects section is removed.
-        // If you re-add a Projects section, this code will become active again.
-
-        const descriptionModal = document.getElementById('descriptionModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalContent = document.getElementById('modalContent');
-        const loadingSpinner = document.getElementById('loadingSpinner');
-
-        function showModal(title, content) {
-            modalTitle.textContent = title;
-            modalContent.innerHTML = content;
-            descriptionModal.classList.add('visible'); // Use 'visible' class for modal animation
+        function closeSkillModal() {
+            skillExplanationModal.classList.remove('visible');
+            skillModalTitle.textContent = '';
+            skillModalContent.innerHTML = '';
         }
 
-        function closeModal() {
-            descriptionModal.classList.remove('visible'); // Remove 'visible' class to hide modal
-            modalTitle.textContent = '';
-            modalContent.innerHTML = '';
-        }
+        async function explainSkill(element) {
+            const skillName = element.textContent.trim();
+            showSkillModal(`Explaining: ${skillName}`, '');
+            skillLoadingSpinner.classList.remove('hidden');
 
-        async function enhanceProjectDescription(projectId) {
-            // This function is currently not called as the Projects section is removed.
-            // It remains here in case you decide to re-introduce a projects section.
-            console.log(`Attempting to enhance project description for ${projectId}. This functionality is currently disabled.`);
-
-            const projectCard = document.getElementById(projectId);
-            const title = projectCard.querySelector('.project-title').textContent;
-            const description = projectCard.querySelector('.project-description').textContent;
-            const technologies = Array.from(projectCard.querySelectorAll('.project-technologies span'))
-                                    .map(span => span.textContent)
-                                    .join(', ');
-
-            showModal(`Enhancing "${title}"...`, '');
-            loadingSpinner.classList.remove('hidden'); // Show spinner
-
-            const prompt = `Please enhance the following project description for a professional portfolio. Make it more detailed, impactful, and highlight the problem solved, technologies used, and the value delivered. Focus on a clear, concise, and engaging tone.
-
-            Project Title: ${title}
-            Original Description: ${description}
-            Technologies Used: ${technologies}
-
-            Enhanced Description:`;
+            const prompt = `Explain the programming concept/technology '${skillName}' in a concise and professional manner, suitable for a technical portfolio. Highlight its key purpose and a common application. Keep the explanation to 2-3 sentences.`;
 
             let chatHistory = [];
             chatHistory.push({ role: "user", parts: [{ text: prompt }] });
@@ -635,27 +560,27 @@
                     if (result.candidates && result.candidates.length > 0 &&
                         result.candidates[0].content && result.candidates[0].content.parts &&
                         result.candidates[0].content.parts.length > 0) {
-                        const enhancedText = result.candidates[0].content.parts[0].text;
-                        loadingSpinner.classList.add('hidden'); // Hide spinner
-                        showModal(`Enhanced Description for "${title}"`, enhancedText);
+                        const explanationText = result.candidates[0].content.parts[0].text;
+                        skillLoadingSpinner.classList.add('hidden');
+                        showSkillModal(`✨ ${skillName} Explained`, explanationText);
                     } else {
-                        loadingSpinner.classList.add('hidden'); // Hide spinner
-                        showModal('Error', 'Could not generate enhanced description. Please try again.');
+                        skillLoadingSpinner.classList.add('hidden');
+                        showSkillModal('Error', 'Could not generate explanation. Please try again.');
                         console.error('Unexpected API response structure:', result);
                     }
                     break; // Success, exit loop
                 } catch (error) {
-                    loadingSpinner.classList.add('hidden'); // Hide spinner
-                    showModal('Error', 'Failed to connect to the enhancement service. Please check your network and try again.');
-                    console.error('Error enhancing project description:', error);
+                    skillLoadingSpinner.classList.add('hidden');
+                    showSkillModal('Error', 'Failed to connect to the explanation service. Please check your network and try again.');
+                    console.error('Error explaining skill:', error);
                     break; // Exit loop on other errors
                 }
             }
             if (retries === maxRetries) {
-                loadingSpinner.classList.add('hidden'); // Hide spinner
-                showModal('Error', 'Failed to generate enhanced description after multiple retries. Please try again later.');
+                skillLoadingSpinner.classList.add('hidden');
+                showSkillModal('Error', 'Failed to generate explanation after multiple retries. Please try again later.');
             }
-        }
+          }
     </script>
 </body>
 </html>
